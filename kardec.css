@@ -1,0 +1,480 @@
+        /* RESET E ESTILOS GERAIS */
+        /* Define a margem e padding padrão para todos os elementos */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Define variáveis de cores para facilitar o uso */
+        :root {
+            --preto: #121212;
+            --preto-claro: #1e1e1e;
+            --vermelho: #e63946;
+            --vermelho-escuro: #d00000;
+            --branco: #f8f9fa;
+            --cinza: #adb5bd;
+        }
+
+        /* Estiliza o scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--preto-claro);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--vermelho);
+            border-radius: 5px;
+        }
+
+        /* Define o fundo e cor de texto padrão */
+        body {
+            background-color: var(--preto);
+            color: var(--branco);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Remove a decoração de links e define a cor */
+        a {
+            text-decoration: none;
+            color: var(--branco);
+        }
+
+        /* HEADER */
+        /* Estiliza o cabeçalho com posição fixa e fundo escuro */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Estiliza o logo com cor vermelha */
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--vermelho);
+        }
+
+        /* Estiliza a navegação */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            position: relative;
+            padding: 0.5rem 0;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        /* Efeito de sublinhado ao passar o mouse */
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--vermelho);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--vermelho);
+        }
+
+        /* SEÇÃO HERO */
+        /* Estiliza a seção inicial com altura total da viewport */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            padding-top: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Cria efeitos decorativos */
+        .hero::before, .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--vermelho) 0%, transparent 70%);
+            filter: blur(50px);
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .hero::before {
+            top: 10%;
+            left: 10%;
+        }
+
+        .hero::after {
+            bottom: 10%;
+            right: 10%;
+        }
+
+        /* Container para o conteúdo do hero */
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 3rem;
+        }
+
+        /* Estiliza o texto do hero */
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-text h1 span {
+            color: var(--vermelho);
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--cinza);
+            max-width: 600px;
+        }
+
+        /* Botão de destaque */
+        .btn {
+            display: inline-block;
+            background-color: var(--vermelho);
+            color: var(--branco);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--vermelho);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
+        }
+
+        /* Estiliza o container da imagem de perfil */
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Estiliza a imagem de perfil com borda e sombra */
+        .profile-img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 5px solid var(--vermelho);
+            object-fit: cover;
+            box-shadow: 0 0 30px rgba(230, 57, 70, 0.5);
+            transition: transform 0.5s;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        /* SEÇÕES */
+        /* Estiliza as seções com padding e fundo */
+        section {
+            padding: 6rem 5%;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Adiciona uma linha decorativa abaixo dos títulos */
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--vermelho);
+            border-radius: 2px;
+        }
+
+        /* Estiliza a seção Sobre */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Estiliza a barra de habilidades */
+        .skills {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .skill {
+            background-color: var(--preto-claro);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .skill.html {
+            color: #e34c26;
+        }
+
+        .skill.js {
+            color: #f0db4f;
+        }
+
+        .skill.python {
+            color: #4B8BBE;
+        }
+
+        /* Estiliza a seção de projetos */
+        #projetos {
+            background-color: var(--preto-claro);
+        }
+
+        .projects-grid {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            grid-template-columns: 1fr;
+            max-width: 400px;
+            margin: 0 auto;
+            gap: 2rem;
+        }
+
+        /* Estiliza os cards de projeto */
+        .project-card {
+            background-color: var(--preto);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--vermelho);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-info p {
+            color: var(--cinza);
+            margin-bottom: 1rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Estiliza a seção de contato */
+        .contact-container {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* Estiliza os itens de contato */
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--preto-claro);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--vermelho);
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover .contact-icon {
+            background-color: var(--vermelho);
+            color: var(--branco);
+            transform: scale(1.1);
+        }
+
+        .contact-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-text p {
+            color: var(--cinza);
+            margin: 0;
+        }
+
+        .likes {
+        margin-top: 1rem;
+        display: flex;
+        gap: 1rem;
+        }
+
+        .like-btn, .dislike-btn {
+        background-color: transparent;
+        color: var(--cinza);
+        border: 1px solid var(--cinza);
+        padding: 0.4rem 1rem;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
+
+        .like-btn:hover, .dislike-btn:hover {
+        background-color: var(--vermelho);
+        color: var(--branco);
+        border-color: var(--vermelho);
+        }
+
+        .liked, .disliked {
+        background-color: var(--vermelho);
+        color: var(--branco);
+        border-color: var(--vermelho);
+        }
+
+
+        /* Estiliza o rodapé */
+        footer {
+            background-color: var(--preto-claro);
+            padding: 2rem 5%;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--preto);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--vermelho);
+            transform: translateY(-5px);
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 900px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            
+            section h2 {
+                font-size: 2rem;
+            }
+        }
